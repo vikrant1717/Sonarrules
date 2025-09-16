@@ -8,4 +8,7 @@
     <packaging>jar</packaging>
     <name>Sonar Maven Project</name>
     <description>Basic Maven structure</description>
+         <properties>
+  <sonar.organization>vikrant1717</sonar.organization>
+</properties>
 </project>
