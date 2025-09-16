@@ -1,0 +1,26 @@
+import java.io.*;
+
+public class Tomato implements Externalizable {
+
+  public Color color;
+
+  // Noncompliant; because of this constructor there is no implicit no-argument constructor,
+  // deserialization will fail
+  public Tomato(Color color) {
+    this.color = color;
+  }
+
+  @Override
+  public void writeExternal(ObjectOutput out) throws IOException {
+    out.writeUTF(color.name());
+  }
+
+  @Override
+  public void readExternal(ObjectInput in) throws IOException {
+    color = Color.valueOf(in.readUTF());
+  }
+}
+
+enum Color {
+  RED, GREEN, BLUE, UNKNOWN;
+}

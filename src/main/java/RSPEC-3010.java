@@ -1,0 +1,15 @@
+import java.util.Date;
+
+public class Person {
+    static Date dateOfBirth;
+    static int expectedFingers;
+
+    public Person(Date birthday) {
+        dateOfBirth = birthday;  // Noncompliant; now everyone has this birthday
+        expectedFingers = 10;  // Noncompliant
+    }
+    
+    public Person(String name, Date birth) {
+        dateOfBirth = birth; // Noncompliant
+    }
+}

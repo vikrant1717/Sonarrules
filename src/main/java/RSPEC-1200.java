@@ -1,0 +1,25 @@
+class Foo {                        // Noncompliant - Foo depends on too many classes: T1, T2, T3, T4, T5, T6 and T7
+  T1 a1;                           // Foo is coupled to T1
+  T2 a2;                           // Foo is coupled to T2
+  T3 a3;                           // Foo is coupled to T3
+
+  public T4 compute(T5 a, T6 b) {  // Foo is coupled to T4, T5 and T6
+    T7 result = a.getResult(b);    // Foo is coupled to T7
+    return (T4) result;
+  }
+
+  public static class Bar {        // Compliant - Bar depends on 2 classes: T8 and T9
+    T8 a8;
+    T9 a9;
+  }
+}
+
+class T1 { T7 getResult(T6 b) { return new T7(); } }
+class T2 {}
+class T3 {}
+class T4 {}
+class T5 {}
+class T6 {}
+class T7 {}
+class T8 {}
+class T9 {}
